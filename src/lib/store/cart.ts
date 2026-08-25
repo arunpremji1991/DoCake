@@ -51,7 +51,12 @@ export const useCartStore = create<CartState>()(
         }),
       clear: () => set({ lines: [] }),
     }),
-    { name: "do-cart" }
+    {
+      name: "do-cart",
+      // Only persist the cart contents — isOpen is transient UI state and
+      // shouldn't cause the drawer to pop open on a fresh page load/navigation.
+      partialize: (state) => ({ lines: state.lines }),
+    }
   )
 );
 

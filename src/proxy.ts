@@ -5,7 +5,7 @@ export const config = {
   matcher: ["/((?!_next|api|favicon.ico|assets|.*\\.[a-zA-Z0-9]+$).*)"],
 };
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const pathnameHasLocale = locales.some(
